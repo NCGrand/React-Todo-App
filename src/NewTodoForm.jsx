@@ -1,24 +1,27 @@
 import { useState } from "react"
+import { Button, Form, Input, InputGroup, InputGroupText, Label } from 'reactstrap'
 
-export function NewTodoForm({ onSubmit }) {
+export function NewTodoForm({ addTodo }) {
     const [newItem, setNewItem] = useState("")
 
-    function handleSubmit(e) {
-        e.preventDefault()
-
+    const handleSubmit = (e) => {
         if (newItem === "") return
-        onSubmit(newItem)
+        addTodo(newItem)
 
         setNewItem("")
     }
 
     return (
-        <form onSubmit={handleSubmit} className="new-item-form">
-            <div className="form-row">
-                <label htmlFor="item" className="header">New Item</label>
-                <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" id="item" />
-            </div>
-            <button className="btn">Add Item</button>
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Label for="todo-item" className="header">
+                New Item
+            </Label>
+            <InputGroup>
+                <Input placeholder="Enter Todo Item" id="todo-item" type="text" onChange={e => setNewItem(e.target.value)} className="new-item-input"/>
+                <Button color="info">
+                    Add Item
+                </Button>
+            </InputGroup>
+        </Form>
     )
 }

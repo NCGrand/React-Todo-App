@@ -1,8 +1,9 @@
 import { TodoItem } from "./TodoItem"
+import { ListGroup } from 'reactstrap'
 
-export function TodoList({ todos, toggleTodo, deleteTodo }) {
+export function TodoList({ todos, toggleTodo, editTodo, deleteTodo }) {
     return (
-        <ul className="list">
+        <ListGroup>
             {todos.length === 0 && <div className="empty">No Todos</div>}
             {todos.map(todo => {
                 return (
@@ -10,10 +11,11 @@ export function TodoList({ todos, toggleTodo, deleteTodo }) {
                         {...todo}
                         key={todo.id}
                         toggleTodo={toggleTodo}
+                        editTodo={editTodo}
                         deleteTodo={deleteTodo}
                     />
                 )
             })}
-        </ul>
+        </ListGroup>
     )
 }
