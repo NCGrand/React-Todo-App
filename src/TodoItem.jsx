@@ -15,7 +15,7 @@ export function TodoItem({
         console.log("modal toggled")
     }
 
-    const [editItem, setEditItem] = useState("")
+    const [editItem, setEditItem] = useState(title)
 
     const handleSubmit = (e) => {
         if (editItem === "") return
@@ -45,7 +45,7 @@ export function TodoItem({
                 <ModalBody>
                     <Form onSubmit={handleSubmit}>
                         <InputGroup>
-                            <Input placeholder={title} type="text" onChange={e => setEditItem(e.target.value)} />
+                            <Input value={editItem} type="text" onChange={e => setEditItem(e.target.value)} />
                             {/* /*This Submit button doesn't need the onClick set to toggle. handleSubmit will be called when button
                         is clicked and handle setting the edited item. The defaut behavior of the form is to refresh the page,
                         which will set the modal to it's initial state (hidden). If onClick is specified as toggle, the modal

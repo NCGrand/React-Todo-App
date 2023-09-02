@@ -53,8 +53,10 @@ export function Dashboard({ todos, setTodos }) {
                         </CardBody>
                     </Card>
                 </Col>
-                <Col className="my-auto">
-                    <Button color="danger" onClick={() => setTodos([])}>Clear All Tasks</Button>
+            </Row>
+            <Row>
+                <Col>
+                    <Button color="danger" className="mt-3 mb-2" onClick={() => setTodos([])}>Clear All Tasks</Button>
                 </Col>
             </Row>
         </Container>
